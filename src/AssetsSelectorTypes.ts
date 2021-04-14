@@ -62,6 +62,7 @@ export type OptionsType = {
     selectedIcon: SelectedIcon
     defaultTopNavigator?: DefaultTopNavOptions
     CustomTopNavigator?: CustomTopNavigator
+    selectedImages: string[]
     noAssets: NoAssets
     onError?(err: any): void
 }

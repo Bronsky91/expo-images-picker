@@ -30,6 +30,7 @@ const AssetsSelector = ({ options }: IAssetPickerOptions): JSX.Element => {
         spinnerColor,
         defaultTopNavigator,
         CustomTopNavigator,
+        selectedImages,
         noAssets,
         onError,
     } = options
@@ -112,6 +113,13 @@ const AssetsSelector = ({ options }: IAssetPickerOptions): JSX.Element => {
         permissions.hasCameraPermission,
         permissions.hasCameraRollPermission,
     ])
+
+    useEffect(() => {
+        if (selectedImages.length > 0) {
+            const selectedImageIds = assetItems.filter(item => selectedImages.includes(item.uri)).map(item => item.id)
+            setSelectedItems((selectedItems => [...selectedItems, ...selectedImageIds]))
+        }
+    }, [assetItems])
 
     const getAssets = () => {
         try {
